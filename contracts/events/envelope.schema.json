@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://insightboard.ai/schemas/events/envelope.v1.json",
+  "title": "EventEnvelopeV1",
+  "type": "object",
+  "required": ["id", "type", "version", "time", "source", "correlation_id", "data"],
+  "properties": {
+    "id": { "type": "string", "minLength": 16 },
+    "type": { "type": "string", "minLength": 3 },
+    "version": { "type": "integer", "minimum": 1 },
+    "time": { "type": "string", "format": "date-time" },
+    "source": { "type": "string", "minLength": 3 },
+    "correlation_id": { "type": "string", "minLength": 8 },
+    "trace_id": { "type": "string" },
+    "tenant_id": { "type": "string" },
+    "data": { "type": "object" }
+  }
+}

@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Feedback Service API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8083
+paths:
+  /v1/feedback:
+    post:
+      summary: Submit product feedback
+      operationId: submitFeedback
+      parameters:
+        - in: header
+          name: X-Request-Id
+          required: false
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [product_id, channel, text]
+              properties:
+                product_id: { type: string }
+                channel:
+                  type: string
+                  enum: [web, email, appstore, playstore, zendesk, intercom]
+                text: { type: string, minLength: 1 }
+                language: { type: string }
+                user_id: { type: string }
+      responses:
+        "202":
+          description: Accepted for processing (async pipeline)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  feedback_id: { type: string }
+                  request_id: { type: string }
+        "400":
+          description: Validation error
+components: {}

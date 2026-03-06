@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+
+# Docker
+docker-data/
+
+# Go build artifacts
+bin/
+build/
+
+# Editor folders
+.vscode/
+.idea/

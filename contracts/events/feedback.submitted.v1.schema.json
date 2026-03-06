@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://insightboard.ai/schemas/events/feedback.submitted.v1.json",
+  "title": "FeedbackSubmittedV1",
+  "type": "object",
+  "required": ["feedback_id", "product_id", "channel", "text", "submitted_at"],
+  "properties": {
+    "feedback_id": { "type": "string" },
+    "product_id": { "type": "string" },
+    "channel": { "type": "string", "enum": ["web", "email", "appstore", "playstore", "zendesk", "intercom"] },
+    "text": { "type": "string", "minLength": 1 },
+    "language": { "type": "string" },
+    "submitted_at": { "type": "string", "format": "date-time" },
+    "user_id": { "type": "string" },
+    "metadata": { "type": "object" }
+  }
+}
